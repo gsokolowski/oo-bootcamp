@@ -4,7 +4,7 @@
  * Encapsulation ------
  *
  * Encapsulation is aking methods and properies not available to public by making them (private or protected)
- * and giwing to public only methods which are needed
+ * and giving to public only methods which are needed
  * method on()
  * method off()
  * Encapsulation is to restrict access to some methods and properties
@@ -12,8 +12,8 @@
  * not through object
  *
  * In Base (Parent) class
- * protected means that I can still access this methods from extended class (subclas)
- * private - subclass is not able to access this properties and obwiosly user either
+ * protected means that I can still access this methods from extended class (subclass)
+ * private - subclass is not able to access this properties and obviosly user either
  *
  */
 
@@ -49,12 +49,12 @@ $switch = new LightSwitch();
 
 // user should use only two methods
 $switch->on();
-$switch->off();
+//$switch->off();
 
+echo '<pre>';
 var_dump($switch);
+echo '</pre>';
 
 // user shouldn't be able to call so you need to make this methods private for class use only !!!
-//$switch->connect(true);
-//$switch->activate(false);
-
-var_dump($switch);
+$switch->connect(true); // this will not work
+$switch->activate(false); // this will not work
