@@ -56,5 +56,5 @@ var_dump($switch);
 echo '</pre>';
 
 // user shouldn't be able to call so you need to make this methods private for class use only !!!
-$switch->connect(true); // this will not work
-$switch->activate(false); // this will not work
+//$switch->connect(true); // this will not work
+//$switch->activate(false); // this will not work
