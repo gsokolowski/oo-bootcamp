@@ -19,10 +19,14 @@ class Person {
 
     public function setAge($age) {
 
-        if($age < 18) {
-            throw new Exception('Person too young');
+        try{            
+            if($age < 18) {
+                throw new Exception('Person too young');
+            }
+            $this->age = $age;
+        } catch (Exception $e) {
+            echo 'Message: ' .$e->getMessage();
         }
-        $this->age = $age;
     }
 
     public function getAge() {
@@ -39,5 +43,6 @@ $john->getAge();
 // property $age needs to be private to not allow others to set prohibited values (age less then 18)
 // private $age
 
+echo '<pre>';
 var_dump($john);
-
+echo '</pre>';
