@@ -19,13 +19,15 @@
  *
  */
 
+
+// creating interface wirh function execute() which takes a string 
 interface Logger {
-    public function execute($message);
+    public function execute(string $message);
 }
 
 class LogToFile implements Logger {
 
-    public function execute($message) {
+    public function execute(string $message) {
 
         var_dump('log message to file '. $message);
     }
@@ -33,13 +35,11 @@ class LogToFile implements Logger {
 
 class LogToDatabase implements Logger {
 
-    public function execute($message) {
+    public function execute(string $message) {
 
         var_dump('log message to database '. $message);
     }
 }
-
-
 
 
 class userController {
@@ -47,7 +47,9 @@ class userController {
     public $logger;
 
     // dependency injection technic - so $logger is an object of LogToFile
-    // implement ro interface
+    // implement through interface
+    // so im passing Interfce here and when you call userController you can choose if you want to pass LogToFile or LogToDatabase 
+    // look at line 71 and 72
     public function __construct(Logger $logger) {
 
         $this->logger = $logger;
@@ -55,7 +57,6 @@ class userController {
 
     // implemented to concread class LogTo file
     // public function __construct(LogToFile $logger) {
-
     //    $this->logger = $logger;
     // }
 
@@ -67,5 +68,8 @@ class userController {
 }
 
 $message = 'Name is JoeDoe';
-$userController = new userController(new LogToFile);
+//$userController = new userController(new LogToFile); //dependency injection technic passing LogToFIle object and it's execute() method
+$userController = new userController(new LogToDatabase); //dependency injection technic passing LogToDatabase object and it's execute() method
+
+// just calling to see which message was called 
 $userController->show($message);

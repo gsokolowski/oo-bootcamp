@@ -6,9 +6,8 @@
  *
  * Interface and Abstract together
  *
- * Login fuction doesn't care what Provider it is. Github or facebook and thats cool
- *
- *
+ * Interface. implement from it
+ * Abstract Class. extend from it 
  */
 
 interface ProviderNew {
@@ -26,6 +25,18 @@ class FacebookProvider implements ProviderNew {
 
     public function getAuthorizationUrl() {
 
-        return 'something';
+        echo 'something FacebookProvider';
     }
 }
+
+class GithubProvider extends AbstractProvider {
+    public function related() {
+        echo 'something GithubProvider';
+    }
+}
+
+$git = new GithubProvider();
+$git->related();
+
+$fb = new FacebookProvider();
+$fb->getAuthorizationUrl();

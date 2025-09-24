@@ -11,6 +11,7 @@ interface Repository {
 }
 
 class MongoRepository implements Repository {
+
     public $data;
 
     public function save($data)
@@ -21,19 +22,24 @@ class MongoRepository implements Repository {
 }
 
 class FileRepository implements Repository {
+ 
     public $data;
 
     public function save($data)
     {
-        // save data to Mongo File DB
+        // save data to FileRepository
+         var_dump('save data to FileRepository ',$data );
     }
 }
-
 
 $data = array (
     'name'=>'Joe',
     'surname'=>'Doe',
 );
 
+
 $repo = new MongoRepository();
 $repo->save($data);
+
+// $repo = new FileRepository();
+// $repo->save($data);
